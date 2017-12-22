@@ -107,6 +107,7 @@ export default {
   computed:{
     ...mapState({
       account: state => state.accounts.selectedAccount,
+      selectedAccountIndex: state => state.accounts.selected,
       accountData: state => state.accounts.accountData,
       assethosts: state => state.asset.assethosts,
     }),
@@ -141,10 +142,12 @@ export default {
     document.addEventListener("backbutton", this.onBackKeyDown, false); 
     if(this.account.address){
       this.fetchData()
+      this.fetchFederationAndInflationInfo()
     }
     this.$watch('account.address',()=>{
       console.log('account address updated...')
       this.fetchData()
+      this.fetchFederationAndInflationInfo()
     })
   },
   beforeDestroy(){
@@ -161,7 +164,8 @@ export default {
       'selectAsset',
       'selectPayment',
       'cleanAccount',
-      'paymentSteamData'
+      'paymentSteamData',
+      'updateAccount'
       ]),
 
     fetchData(){
@@ -192,6 +196,29 @@ export default {
       }
 
     },
+    fetchFederationAndInflationInfo() {
+        // fetch home_domain and inflation_destination from horizon.
+        accountapi.getAccountInfo(this.account.address).then((accountInfo) => {
+          console.log("fetchFederationAndInflationInfo")
+
+          if ((this.account.federationAddress !== accountInfo.home_domain) || (this.account.inflationAddress !== accountInfo.inflation_destination)) {
+            let data = Object.assign({}, this.account, {
+              federationAddress: accountInfo.home_domain,
+              inflationAddress: accountInfo.inflation_destination
+            })
+            let params = {index: this.selectedAccountIndex, account: data}
+            this.updateAccount(params)
+              .then((data) => {
+                console.log("success");
+                console.log(data);
+              })
+              .catch(err => {
+                console.log("failed");
+                console.error(err)
+              })
+          }
+        }).catch(err => console.log(err));
+      },
     load(){
       this.cleanAccount()
       let address = this.account.address
