@@ -28,6 +28,15 @@ export const i18n = new VueI18n({
   }
 })
 
+export const DEVICE_LANGUAGE = function getDeviceLanguage() {
+  // console.log("getDeviceLanguage: " + navigator.language);
+  if (['zh-CN', 'zh-TW', 'zh-HK'].includes(navigator.language)) {
+    return ZH_CN
+  } else {
+    return EN
+  }
+}()
+
 export const RandomPlanetsCount = 9
 export const RandomColorsCount = 9
 
