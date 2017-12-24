@@ -52,6 +52,14 @@ cordova prepare
 ### 生在IPA需要
 - xcode
 
+### 想从源代码构建 Android 应用但又不想配置各种烦琐的环境？来试试我们的代码构建镜像吧。
+
+你需要确认你的计算机已经安装了 Docker ，然后执行下面这条命令
+```
+docker run -it --rm -v `pwd`/fireflyapk:/fireflyapk overcat/firefly
+```
+构建完成后你可以在 fireflyapk 文件夹中找到生成的 APK 。
+
 
 ## 开源协议
 **萤火钱包** 使用 **MIT License**

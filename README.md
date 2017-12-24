@@ -51,6 +51,14 @@ cordova prepare
 ### Build IPA Need
 - xcode
 
+### Want to build Android application from source code in a easy way?
+
+You need to make sure your computer has Docker installed, then run the following command
+```
+docker run -it --rm -v `pwd`/fireflyapk:/fireflyapk overcat/firefly
+```
+you can find the generated APK in the fireflyapk folder.
+
 
 ## License
 **firefly** is released under **MIT License**
