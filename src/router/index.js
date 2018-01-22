@@ -31,7 +31,7 @@ const router = new Router({
       name: 'SendAsset',
       component: resolve => require(['../pages/SendAsset.vue'], resolve)
     },
-    
+
     {
       path: '/wallet',
       name: 'Wallet',
@@ -98,17 +98,17 @@ const router = new Router({
           name: 'ContactsList',
           component: resolve => require(['../pages/contacts/ContactsList.vue'], resolve),
         },
-        { 
+        {
           path: 'add',
           name: 'AddContact',
           component: resolve => require(['../pages/contacts/AddContact.vue'], resolve)
         },
-        { 
+        {
           path: 'modify/:id',
           name: 'ModifyContact',
           component: resolve => require(['../pages/contacts/ModifyContact.vue'], resolve)
         },
-        { 
+        {
           path: ':id',
           name: 'ContactDetails',
           component: resolve => require(['../pages/contacts/ContactDetails.vue'], resolve)
@@ -186,17 +186,17 @@ const router = new Router({
           name: 'MyAddressList',
           component: resolve => require(['../pages/myaddress/MyAddressList.vue'], resolve),
         },
-        { 
+        {
           path: 'add',
           name: 'MyAddressAdd',
           component: resolve => require(['../pages/myaddress/MyAddressAdd.vue'], resolve)
         },
-        { 
+        {
           path: 'edit/:name',
           name: 'MyAddressEdit',
           component: resolve => require(['../pages/myaddress/MyAddressEdit.vue'], resolve)
         },
-        { 
+        {
           path: ':name',
           name: 'MyAddressView',
           component: resolve => require(['../pages/myaddress/MyAddressView.vue'], resolve)
@@ -215,8 +215,13 @@ const router = new Router({
     },
     {
       path: '/about',
-      name: 'Abount',
+      name: 'About',
       component: resolve => require(['../pages/About'], resolve)
+    },
+    {
+      path: '/effects',
+      name: 'Effects',
+      component: resolve => require(['../pages/Effects'], resolve)
     },
 
 

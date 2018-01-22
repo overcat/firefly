@@ -237,6 +237,8 @@ const actions = {
     if (queryData.records.length < recordPerPage) {
       queryData.next = null
     }
+    queryData.records = queryData.records.filter(x => x.type == 'trade')
+    console.log(queryData);
     commit(QUERY_MY_EFFECTS, queryData)
   },
 }

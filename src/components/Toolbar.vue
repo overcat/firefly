@@ -3,11 +3,11 @@
  */
 <template>
   <div class="cp-toolbar">
-     
+
     <v-navigation-drawer
       absolute temporary dark
-      v-model="showmenu" 
-      class='aside' 
+      v-model="showmenu"
+      class='aside'
     >
       <div class="menu-head">
         <div class="menu-row menu-row-1" @click.stop="redirect({name:'AccountNameCard'})">
@@ -101,7 +101,7 @@
       <div class="sheet-content">
         <div class="sheet-title">
           <h4 class="title">
-            <slot name='switch_password'> 
+            <slot name='switch_password'>
           <!--if call for passowrd -->
               <span>{{$t('ChangeAccount')}}</span>
             </slot>
@@ -148,6 +148,7 @@ export default {
          { title: 'Menu.Contacts', path:{name:'ContactsList'}, icon: "supervisor_account"},
          { title: 'Menu.Settings', path:{name:'Settings'}, icon: "settings" },
          { title: 'Menu.Help', path:{name:'Help'}, icon: "help" },
+         { title: 'Menu.Effects', path:{name:'Effects'} },
       ],
       selected: {},
       password: null,
@@ -223,7 +224,7 @@ export default {
     okPwdInput(){
       if(this.checkPwd)return
       //无密码则报错
-      if(!this.password){ 
+      if(!this.password){
         this.$toasted.error(this.$t('Error.PasswordWrong')) //请输入密码
         return
       }
@@ -301,7 +302,7 @@ export default {
   text-align: center
   width: 100%
   flex:1
-        
+
 
 .sheet-content
   background: $secondarycolor.gray
@@ -336,9 +337,9 @@ export default {
 //   width: 100%
 //   padding:0
 //   background: $secondarycolor.gray !important
- 
+
 .aside
-  background: $secondarycolor.gray !important 
+  background: $secondarycolor.gray !important
   .divid
     background-color rgb(33,33,34)
     border: none
@@ -397,13 +398,13 @@ export default {
   .list
     padding 0
     .menu-li
-      text-decoration: none 
+      text-decoration: none
       .list__tile
         &__avatar
           .icon
             color #999 !important
         &__content
-        &.title 
+        &.title
           font-size: 16px
           color #999
       .list__tile:hover
@@ -412,9 +413,9 @@ export default {
     .menu-li.menuactive
       background rgba(33,33,34,0.5)
       .icon
-        color: $primarycolor.green !important 
+        color: $primarycolor.green !important
       .list__tile__title
-        color: $primarycolor.green 
+        color: $primarycolor.green
   .showaccounts
     background: $secondarycolor.gray
     background: #29292b
@@ -432,7 +433,7 @@ export default {
         .name
           display:block
           float:left
-          color: $secondarycolor.font  
+          color: $secondarycolor.font
           overflow: hidden
           width: 80%
           text-overflow:ellipsis
